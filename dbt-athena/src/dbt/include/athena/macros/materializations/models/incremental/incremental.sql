@@ -20,16 +20,16 @@
     {% set tmp_table_suffix = '__dbt_tmp' %}
   {% endif %}
 
-  log("Table Sufix= " + tmp_table_suffix)
-  log("unique_tmp_table_suffix= " + unique_tmp_table_suffix)
-  log("table_type= " + table_type)
-  log("strategy= " + strategy)
+  {{ log(">>> Table Sufix= " + tmp_table_suffix) }}
+  {{ log(">>> unique_tmp_table_suffix= " + unique_tmp_table_suffix) }}
+  {{ log(">>> table_type= " + table_type) }}
+  {{ log(">>> strategy= " + strategy) }}
 
   {% if unique_tmp_table_suffix == True and table_type == 'iceberg' %}
     {% set tmp_table_suffix = adapter.generate_unique_temporary_table_suffix() %}
   {% endif %}
 
-  log("Table Sufix= " + tmp_table_suffix)
+  {{ log(">>> Table Sufix= " + tmp_table_suffix) }}
 
   {% set old_tmp_relation = adapter.get_relation(identifier=target_relation.identifier ~ tmp_table_suffix,
                                              schema=schema,

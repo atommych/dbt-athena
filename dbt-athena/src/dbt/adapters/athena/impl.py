@@ -429,7 +429,8 @@ class AthenaAdapter(SQLAdapter):
 
     @available
     def generate_unique_temporary_table_suffix(self, suffix_initial: str = "__dbt_tmp") -> str:
-        LOGGER.debug(f"Generated Sufix = {suffix_initial}_{str(uuid4()).replace('-', '_')}")
+        LOGGER.debug(f">>> Generated Sufix = {suffix_initial}_{str(uuid4()).replace('-', '_')}")
+        print(f">>> Generated Sufix = {suffix_initial}_{str(uuid4()).replace('-', '_')}")
         return f"{suffix_initial}_{str(uuid4()).replace('-', '_')}"
 
     def quote(self, identifier: str) -> str:
